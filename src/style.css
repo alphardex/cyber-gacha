@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+}
+
+.hollow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#sketch {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.loader-screen {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: 0.3s;
+  background: white;
+}
+
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading {
+  color: black;
+  font-size: 1.875rem;
+  letter-spacing: 0.1em;
+}
+
+.loading span {
+  animation: blur 1.5s calc(var(--i) / 5 * 1s) alternate infinite;
+}
+
+@keyframes blur {
+  to {
+    filter: blur(2px);
+  }
+}
+
+.instruction {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.7rem;
+  width: 20rem;
+  opacity: 0.75;
+}
