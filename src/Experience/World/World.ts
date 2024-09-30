@@ -116,13 +116,17 @@ export default class World extends kokomi.Component {
       color: color || (rarityColorMap as any)[rarity],
       rarity,
     });
-    gc.body.addEventListener("collide", (collision: any) => {
+    const playHitSound = (collision: any) => {
       const impactStrength = collision.contact.getImpactVelocityAlongNormal();
       if (impactStrength > 5) {
         this.hitSE.volume(Math.random());
         this.hitSE.stop();
         this.hitSE.play();
       }
+    };
+    gc.body.addEventListener("collide", playHitSound);
+    gc.on("remove", () => {
+      gc.body.removeEventListener("collide", playHitSound);
     });
     gc.addExisting();
     this.gcs.push(gc);

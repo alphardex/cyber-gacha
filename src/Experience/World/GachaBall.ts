@@ -19,6 +19,7 @@ export default class GachaBall extends kokomi.Component {
   group: THREE.Group;
   material: THREE.MeshStandardMaterial;
   body: CANNON.Body;
+  isRemoved: boolean;
   constructor(base: Experience, config: Partial<GachaBallConfig> = {}) {
     super(base);
 
@@ -74,6 +75,8 @@ export default class GachaBall extends kokomi.Component {
     );
     this.body.angularVelocity.copy(angularVelocity);
     this.body.angularDamping = 0.4;
+
+    this.isRemoved = false;
   }
   addExisting() {
     this.container.add(this.group);
@@ -81,7 +84,13 @@ export default class GachaBall extends kokomi.Component {
   }
   update() {}
   remove() {
+    if (this.isRemoved) {
+      return;
+    }
+
+    this.emit("remove");
     this.container.remove(this.group);
     this.base.physics.world.removeBody(this.body);
+    this.isRemoved = true;
   }
 }
