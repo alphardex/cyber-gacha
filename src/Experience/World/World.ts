@@ -1,7 +1,7 @@
 import * as kokomi from "kokomi.js";
 import * as THREE from "three";
 import * as CANNON from "cannon-es";
-import { Howl, Howler } from "howler";
+import { Howl } from "howler";
 
 import type Experience from "../Experience";
 
@@ -209,7 +209,7 @@ export default class World extends kokomi.Component {
 
     this.slipperyMat = slipperyMaterial;
   }
-  update(time: number): void {
+  update(): void {
     this.gcs.forEach((gc) => {
       if (gc.body.position.y < -5) {
         gc.remove();
