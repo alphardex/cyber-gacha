@@ -1,7 +1,7 @@
 import confetti from "canvas-confetti";
 
 const atariConfetti = () => {
-  var end = Date.now() + 5 * 1000;
+  const end = Date.now() + 5 * 1000;
 
   (function frame() {
     confetti({
