@@ -3,8 +3,6 @@ import confetti from "canvas-confetti";
 const atariConfetti = () => {
   var end = Date.now() + 5 * 1000;
 
-  // go Buckeyes!
-
   (function frame() {
     confetti({
       particleCount: 5,
